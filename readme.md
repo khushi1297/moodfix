@@ -56,3 +56,26 @@ npm install
 ```
 
 3. Create a `.env` file in the root folder
+4. Seed the database
+```bash
+npm run seed
+```
+
+5. Start the server
+```bash
+npm start
+```
+
+6. Open browser at `http://localhost:3000`
+
+## Database Export
+
+This repository includes `movies_export.json` as the database export file for submission.
+
+## MongoDB Requirement
+
+This project requires a MongoDB Atlas connection string in the `.env` file. Create a free cluster at mongodb.com/cloud/atlas and paste the connection string as `MONGO_URI`.
+
+## Challenges Overcome
+
+Building a true single-page application without a frontend framework required careful DOM manipulation and show/hide logic across all views. Managing cart state entirely in MongoDB while keeping the UI responsive was solved by re-fetching after every cart operation. Designing a mood-to-genre mapping layer connected user emotions to database queries cleanly without exposing backend logic to the frontend. The hidden admin panel required debounce-style click-timing logic to detect 5 rapid clicks on the logo. Styling a premium dark cinematic UI without any CSS libraries pushed creative use of CSS variables, transitions, and glass-morphism effects.
