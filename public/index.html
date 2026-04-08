@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoodFlix 🎭</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <!-- 5 rapid clicks on logo = secret admin access -->
+    <div class="logo" onclick="handleLogoClick()" style="cursor:pointer">🎭 MoodFlix</div>
+    <div class="nav-links">
+      <button onclick="showPage('movies')" class="nav-btn">Browse All</button>
+      <button onclick="openCart()" class="nav-btn cart-btn">
+        🛒 Cart <span id="cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       PAGE: MOOD SELECTION (default landing page)
+  ============================================================ -->
+  <div id="page-mood" class="page active">
+    <div class="hero">
+      <h1>What's your mood tonight?</h1>
+      <p>Pick a feeling, we'll find the perfect movie 🎬</p>
+    </div>
+    <div class="mood-grid">
+      <div class="mood-card" onclick="selectMood('Date Night')">💕 Date Night</div>
+      <div class="mood-card" onclick="selectMood('Feeling Hyped')">🔥 Feeling Hyped</div>
+      <div class="mood-card" onclick="selectMood('Need a Laugh')">😂 Need a Laugh</div>
+      <div class="mood-card" onclick="selectMood('Scare Me')">😱 Scare Me</div>
+      <div class="mood-card" onclick="selectMood('3AM Vibes')">🌙 3AM Vibes</div>
+      <div class="mood-card" onclick="selectMood('Feeling Sad')">😢 Feeling Sad</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PAGE: MOVIE BROWSER (mood-filtered or all movies)
+  ============================================================ -->
+  <div id="page-movies" class="page">
+    <div class="page-header">
+      <button onclick="showPage('mood')" class="back-btn">← Back</button>
+      <h2 id="mood-title">Movies</h2>
+    </div>
+    <div id="movies-grid" class="movies-grid"></div>
+  </div>
+
+  <!-- ============================================================
+       PAGE: ADMIN PANEL (hidden — access via 5-click logo)
+  ============================================================ -->
+  <div id="page-admin" class="page">
+    <div class="page-header">
+      <button onclick="showPage('mood')" class="back-btn">← Back</button>
+      <h2>Admin Panel 🔐</h2>
+    </div>
+    <div class="admin-layout">
+      <!-- Add / Edit form -->
+      <div class="admin-form-box">
+        <h3 id="form-title">Add New Movie</h3>
+        <input id="a-title" placeholder="Title" />
+        <input id="a-genre" placeholder="Genre" />
+        <select id="a-mood">
+          <option value="">Select Mood</option>
+          <option>Date Night</option>
+          <option>Feeling Hyped</option>
+          <option>Need a Laugh</option>
+          <option>Scare Me</option>
+          <option>3AM Vibes</option>
+          <option>Feeling Sad</option>
+        </select>
+        <input id="a-description" placeholder="Description" />
+        <input id="a-price" placeholder="Price (e.g. 9.99)" type="number" />
+        <input id="a-year" placeholder="Year" type="number" />
+        <input id="a-rating" placeholder="Rating (e.g. 8.5)" type="number" step="0.1" />
+        <input id="a-image" placeholder="Image URL" />
+        <div class="form-btns">
+          <button onclick="saveMovie()" class="save-btn">Save Movie</button>
+          <button onclick="resetForm()" class="reset-btn">Clear</button>
+        </div>
+      </div>
+      <!-- Movie list -->
+      <div class="admin-list" id="admin-list"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CART DRAWER (slides in from the right)
+  ============================================================ -->
+  <div id="cart-overlay" onclick="closeCart()"></div>
+  <div id="cart-drawer">
+    <div class="drawer-header">
+      <h2>Your Cart 🛒</h2>
+      <button onclick="closeCart()" class="close-btn">✕</button>
+    </div>
+    <div id="cart-items"></div>
+    <div id="cart-footer" class="cart-footer hidden">
+      <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+      <button onclick="checkout()" class="checkout-btn">Checkout ✅</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

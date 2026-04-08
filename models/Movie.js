@@ -1,0 +1,1 @@
+const mongoose=require('mongoose');const s=new mongoose.Schema({title:String,genre:String,mood:String,description:String,price:Number,year:Number,rating:Number,image:String});module.exports=mongoose.model('Movie',s);
