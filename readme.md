@@ -55,7 +55,7 @@ cd moodfix
 npm install
 ```
 
-3. Create a `.env` file in the root folder
+3. Create a `.env` file in the root folder:
 4. Seed the database
 ```bash
 npm run seed
